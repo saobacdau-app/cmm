@@ -32,14 +32,7 @@ services:
       retries: 5
 
   backend:
-    build:
-      context: ../backend
-      dockerfile: Dockerfile
-      args:
-        MAVEN_PROFILE: staging
-        SKIP_TESTS: "true"
-        APP_VERSION: 1.0.0
-    image: app-backend:staging
+    image: saobacdauapp/app-backend:1.0.0
     container_name: app-backend
     env_file:
       - .env
@@ -63,14 +56,7 @@ services:
       - ./logs:/app/logs/
 
   receiver:
-    build:
-      context: ../cmm-receiver
-      dockerfile: Dockerfile
-      args:
-        MAVEN_PROFILE: staging
-        SKIP_TESTS: "true"
-        APP_VERSION: 1.0.0
-    image: app-receiver:staging
+    image: saobacdauapp/app-receiver:1.0.0
     container_name: app-receiver
     env_file:
       - .env
@@ -95,12 +81,7 @@ services:
       - ./logs:/app/logs/
 
   frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
-      args:
-        ENV: staging
-    image: app-frontend:staging
+    image: saobacdauapp/app-backend:1.0.0
     container_name: app-frontend
     depends_on:
       - backend
