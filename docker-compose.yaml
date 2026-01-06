@@ -40,9 +40,8 @@ services:
       SPRING_JPA_SHOW_SQL: "true"
       SERVER_PORT: 8181
       JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
-      JAVA_OPTS: >
-        -Dspring.profiles.active=staging
-        -Xms512m -Xmx1024m
+      JAVA_OPTS: ${JAVA_OPTS:--Xms512m -Xmx1024m  -Dspring.profiles.active=staging}
+
     ports:
       - "8181:8181"
     networks:
@@ -63,13 +62,10 @@ services:
       - .env
     environment:
       # Runtime environment variables
-      SPRING_PROFILES_ACTIVE: staging
       SPRING_JPA_SHOW_SQL: "true"
       SERVER_PORT: 8282
       JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
-      JAVA_OPTS: >
-        -Dspring.profiles.active=staging
-        -Xms512m -Xmx1024m
+      JAVA_OPTS: ${JAVA_OPTS:--Xms512m -Xmx1024m  -Dspring.profiles.active=staging}
     ports:
       - "8282:8282"
     networks:
