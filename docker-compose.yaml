@@ -33,6 +33,7 @@ services:
   backend:
     image: saobacdauapp/app-backend:1.0.0
     container_name: app-backend
+    restart: unless-stopped
     env_file:
       - .env
     command: >
@@ -64,6 +65,7 @@ services:
   receiver:
     image: saobacdauapp/app-receiver:1.0.0
     container_name: app-receiver
+    restart: unless-stopped
     env_file:
       - .env
     command: >
