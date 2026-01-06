@@ -1,11 +1,16 @@
 # DEPLOY Module CMM
-## Môi trường 
-
 ## Cài đặt docker/docker compose
 
-## pull CMM
+    https://docs.docker.com/engine/install/
 
-## Đổi cấu hình trong file .env theo yêu cầu của bạn
+## pull CMM
+    
+    git pull https://github.com/saobacdau-app/cmm.git
+
+## Đổi cấu hình trong file .env
 
 ## RUN
+    docker compose up -d
 
+## Sử dụng
+    https://IP-Server
