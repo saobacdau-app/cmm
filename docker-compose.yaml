@@ -25,11 +25,12 @@ services:
     healthcheck:
       test:
         [
-          "CMD", "mariadb-admin","ping","-h","localhost","-u","root","-p${MARIADB_ROOT_PASSWORD}"
+          "CMD-SHELL",
+          "mariadb -u${DATABASE_USER} -p${DATABASE_PASSWORD} ${DATABASE_NAME} -e \"SHOW TABLES LIKE 'hphls_nsd'\" | grep users"
         ]
       interval: 10s
       timeout: 5s
-      retries: 5
+      retries: 10
 
   backend:
     image: saobacdauapp/app-backend:1.0.0
@@ -50,6 +51,9 @@ services:
       - "8181:8181"
     networks:
       - cmm-network
+    depends_on:
+      cmmdb:
+        condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8181" ]
       interval: 10s        # mỗi 10s kiểm tra 1 lần
@@ -78,6 +82,9 @@ services:
       - "8282:8282"
     networks:
       - cmm-network
+    depends_on:
+      cmmdb:
+        condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8282" ]
       interval: 10s        # mỗi 10s kiểm tra 1 lần
