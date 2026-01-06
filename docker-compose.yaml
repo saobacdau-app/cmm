@@ -36,11 +36,11 @@ services:
     container_name: app-backend
     env_file:
       - .env
+    command: >
+      java -Dspring.profiles.active=staging
+           -Xms512m -Xmx1024m
+           -jar /app/app.jar
     environment:
-      SPRING_APPLICATION_JSON: |
-        {
-          "spring.profiles.active": "staging"
-        }
       SPRING_JPA_SHOW_SQL: "true"
       SERVER_PORT: 8181
       JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
@@ -64,12 +64,12 @@ services:
     container_name: app-receiver
     env_file:
       - .env
+    command: >
+      java -Dspring.profiles.active=staging
+           -Xms512m -Xmx1024m
+           -jar /app/app.jar
     environment:
       # Runtime environment variables
-      SPRING_APPLICATION_JSON: |
-        {
-          "spring.profiles.active": "staging"
-        }
       SPRING_JPA_SHOW_SQL: "true"
       SERVER_PORT: 8282
       JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
