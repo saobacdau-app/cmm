@@ -5,11 +5,12 @@
 
 ## pull CMM
     
-    git pull https://github.com/saobacdau-app/cmm.git
+    git clone https://github.com/saobacdau-app/cmm.git
 
 ## Đổi cấu hình trong file .env
 
 ## RUN
+    cd cmm
     docker compose up -d
 
 ## Sử dụng
