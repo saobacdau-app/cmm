@@ -24,7 +24,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "mariadb -u${DATABASE_USER} -p${DATABASE_PASSWORD} ${DATABASE_NAME} -e \"SHOW TABLES LIKE 'hphls_nsd'\" | grep users"
+          "mariadb -u${DATABASE_USER} -p${DATABASE_PASSWORD} ${DATABASE_NAME} -e \"SHOW TABLES LIKE 'hphls_nsd'\" | grep hphls_nsd"
         ]
       interval: 10s
       timeout: 5s
