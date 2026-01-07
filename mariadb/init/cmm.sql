@@ -227,7 +227,7 @@ CREATE TABLE `config_system`  (
 -- ----------------------------
 -- Records of config_system
 -- ----------------------------
-INSERT INTO `config_system` VALUES ('CMM_CDR_RECEIVER', 'http://10.168.112.128:8282/api/v1/cdr_receiver', '', '', 'string', '1990-01-01 00:00:00', '2025-12-29 23:30:45');
+INSERT INTO `config_system` VALUES ('CMM_CDR_RECEIVER', 'http://10.168.112.128:8282/receiver/api/v1/cdr_receiver', '', '', 'string', '1990-01-01 00:00:00', '2025-12-29 23:30:45');
 INSERT INTO `config_system` VALUES ('ROUND-ROBIN-CYCLE', 60, '', '', 'number', '1990-01-01 00:00:00', '2025-12-29 23:30:45');
 
 -- ----------------------------
