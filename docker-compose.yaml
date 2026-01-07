@@ -58,54 +58,54 @@ services:
     volumes:
       - ./logs:/app/logs/
 
-  receiver:
-    image: saobacdauapp/app-receiver:1.0.0
-    container_name: app-receiver
-    restart: unless-stopped
-    env_file:
-      - .env
-    environment:
-      # Runtime environment variables
-      SPRING_PROFILES_ACTIVE: production
-      SPRING_JPA_SHOW_SQL: "true"
-      SERVER_PORT: 8282
-      JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
-      JAVA_OPTS: ${JAVA_OPTS:--Xms512m -Xmx1024m }
-    ports:
-      - "8282:8282"
-    networks:
-      - cmm-network
-    depends_on:
-      cmmdb:
-        condition: service_healthy
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8282" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 40s
-    volumes:
-      - ./logs:/app/logs/
-
-  frontend:
-    image: saobacdauapp/app-backend:1.0.0
-    container_name: app-frontend
-    depends_on:
-      - backend
-    volumes:
-      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./cert:/etc/nginx/cert/
-    ports:
-      - "80:80"
-      - "443:443"
-    networks:
-      - cmm-network
-    restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '0.5'
-          memory: 512M
+#  receiver:
+#    image: saobacdauapp/app-receiver:1.0.0
+#    container_name: app-receiver
+#    restart: unless-stopped
+#    env_file:
+#      - .env
+#    environment:
+#      # Runtime environment variables
+#      SPRING_PROFILES_ACTIVE: production
+#      SPRING_JPA_SHOW_SQL: "true"
+#      SERVER_PORT: 8282
+#      JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
+#      JAVA_OPTS: ${JAVA_OPTS:--Xms512m -Xmx1024m }
+#    ports:
+#      - "8282:8282"
+#    networks:
+#      - cmm-network
+#    depends_on:
+#      cmmdb:
+#        condition: service_healthy
+#    healthcheck:
+#      test: [ "CMD", "curl", "-f", "http://localhost:8282" ]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 5
+#      start_period: 40s
+#    volumes:
+#      - ./logs:/app/logs/
+#
+#  frontend:
+#    image: saobacdauapp/app-backend:1.0.0
+#    container_name: app-frontend
+#    depends_on:
+#      - backend
+#    volumes:
+#      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+#      - ./cert:/etc/nginx/cert/
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#    networks:
+#      - cmm-network
+#    restart: unless-stopped
+#    deploy:
+#      resources:
+#        limits:
+#          cpus: '0.5'
+#          memory: 512M
 
 networks:
   cmm-network:
