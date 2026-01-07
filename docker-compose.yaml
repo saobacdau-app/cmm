@@ -37,6 +37,7 @@ services:
     env_file:
       - .env
     environment:
+      SPRING_PROFILES_ACTIVE: production
       SPRING_JPA_SHOW_SQL: "true"
       SERVER_PORT: 8181
       JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
@@ -65,6 +66,7 @@ services:
       - .env
     environment:
       # Runtime environment variables
+      SPRING_PROFILES_ACTIVE: production
       SPRING_JPA_SHOW_SQL: "true"
       SERVER_PORT: 8282
       JWT_SECRET: WlSKedhlklTqSrR1VajEv/U46TLFKfLGqNk5d8MqfkNfyuHTuRpeu5bQCxxvvRlRk1G/F6WahwflnqKZP40KaQ==
