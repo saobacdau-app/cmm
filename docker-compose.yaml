@@ -88,7 +88,7 @@ services:
       - ./logs:/app/logs/
 #
   frontend:
-    image: saobacdauapp/app-backend:1.0.0
+    image: saobacdauapp/app-frontend:1.0.0
     container_name: app-frontend
     depends_on:
       - backend
