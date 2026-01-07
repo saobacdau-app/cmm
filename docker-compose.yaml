@@ -87,25 +87,25 @@ services:
     volumes:
       - ./logs:/app/logs/
 #
-#  frontend:
-#    image: saobacdauapp/app-backend:1.0.0
-#    container_name: app-frontend
-#    depends_on:
-#      - backend
-#    volumes:
-#      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
-#      - ./cert:/etc/nginx/cert/
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#    networks:
-#      - cmm-network
-#    restart: unless-stopped
-#    deploy:
-#      resources:
-#        limits:
-#          cpus: '0.5'
-#          memory: 512M
+  frontend:
+    image: saobacdauapp/app-backend:1.0.0
+    container_name: app-frontend
+    depends_on:
+      - backend
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./cert:/etc/nginx/cert/
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - cmm-network
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
 
 networks:
   cmm-network:
