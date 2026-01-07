@@ -50,10 +50,10 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8181" ]
-      interval: 10s        # mỗi 10s kiểm tra 1 lần
-      timeout: 5s          # nếu không trả về trong 5s → fail
-      retries: 5           # thử lại 5 lần trước khi coi là unhealthy
-      start_period: 40s    # chờ 40s sau khi container start mới bắt đầu check
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
     volumes:
       - ./logs:/app/logs/
 
@@ -78,10 +78,10 @@ services:
         condition: service_healthy
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8282" ]
-      interval: 10s        # mỗi 10s kiểm tra 1 lần
-      timeout: 5s          # nếu không trả về trong 5s → fail
-      retries: 5           # thử lại 5 lần trước khi coi là unhealthy
-      start_period: 40s    # chờ 40s sau khi container start mới bắt đầu check
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
     volumes:
       - ./logs:/app/logs/
 
