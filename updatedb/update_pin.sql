@@ -1,15 +1,35 @@
-CREATE OR REPLACE PROCEDURE update_pin(IN pMeetingDetailId CHAR(50),IN pMeetingId CHAR(50))
+USE cmm;
+
+DELIMITER $$
+
+CREATE OR REPLACE PROCEDURE update_pin(
+  IN pMeetingDetailId CHAR(50),
+  IN pMeetingId CHAR(50)
+)
 BEGIN
+  DECLARE v_pin INT DEFAULT 0;
 
-declare v_pin int;
-select pin into v_pin from call_command where meeting_detail_id=pMeetingDetailId;
+SELECT pin
+INTO v_pin
+FROM call_command
+WHERE meeting_detail_id = pMeetingDetailId
+    LIMIT 1;
 
-if v_pin=0 then
-update call_command set pin=1 where meeting_detail_id=pMeetingDetailId;
-update call_command set pin=0 where meeting_detail_id<>pMeetingDetailId and meeting_id=pMeetingId;
-else
-update call_command set pin=0 where meeting_detail_id=pMeetingDetailId;
-end if;
+IF v_pin = 0 THEN
+UPDATE call_command
+SET pin = 1
+WHERE meeting_detail_id = pMeetingDetailId;
 
-commit;
-END;
+UPDATE call_command
+SET pin = 0
+WHERE meeting_detail_id <> pMeetingDetailId
+  AND meeting_id = pMeetingId;
+ELSE
+UPDATE call_command
+SET pin = 0
+WHERE meeting_detail_id = pMeetingDetailId;
+END IF;
+
+END$$
+
+DELIMITER ;
