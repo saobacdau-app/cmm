@@ -1,5 +1,6 @@
-CREATE OR REPLACE PROCEDURE `update_pin`(IN `pMeetingDetailId` CHAR(50),IN `pMeetingId` CHAR(50))
+CREATE OR REPLACE PROCEDURE update_pin(IN pMeetingDetailId CHAR(50),IN pMeetingId CHAR(50))
 BEGIN
+
 declare v_pin int;
 select pin into v_pin from call_command where meeting_detail_id=pMeetingDetailId;
 
@@ -11,5 +12,4 @@ update call_command set pin=0 where meeting_detail_id=pMeetingDetailId;
 end if;
 
 commit;
-
-END
+END;
