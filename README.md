@@ -28,3 +28,5 @@
 # Cấu hình tham số
     1. Thông tin kết nối tới CMS: Cài đặt hệ thống => Danh sách CMS
     2. Địa chỉ nhận Call CDR: Cài đặt hệ thống => Cấu hình hệ thống => CMM_CDR_RECEIVER (Thay IP bằng IP của server triển khai phục vụ nhận CDR từ CMS)
+
+
